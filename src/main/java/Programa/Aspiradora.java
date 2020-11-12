@@ -5,7 +5,9 @@ import javax.swing.JOptionPane;
 public class Aspiradora {
 
     public static void main(String[] args) {
-
+        
+        int Bateria;
+        int SeleccionUsuario;
         String IPIN = JOptionPane.showInputDialog(null,
                 "Introduzca su PIN de seguridad para la AspiradoraDaw");
         int PIN = Integer.parseInt(IPIN);
@@ -16,7 +18,9 @@ public class Aspiradora {
             PIN = Integer.parseInt(FalloPIN);
 
         }
-
+        do {            
+            
+        
         String Menu = JOptionPane.showInputDialog(null, "Elige opción:\n"
                 + "1.- Configuración del Sistema\n"
                 + "2.- Cargar\n"
@@ -25,7 +29,7 @@ public class Aspiradora {
                 + "5.- Estado General\n"
                 + "6.- Buscar Base de Carga\n"
                 + "0.- Apagar");
-        int SeleccionUsuario = Integer.parseInt(Menu);
+        SeleccionUsuario = Integer.parseInt(Menu);
 
         switch (SeleccionUsuario) {
 
@@ -34,12 +38,14 @@ public class Aspiradora {
             case 2:
                 String BateriaO = JOptionPane.showInputDialog(null, "Has escogido cambiar la bateria\n"
                         + "Escoga un porcentaje valido de bateria");
-                int Bateria = Integer.parseInt(BateriaO);
+                Bateria = Integer.parseInt(BateriaO);
                 if (Bateria < 1 | Bateria > 100) {
                     BateriaO = JOptionPane.showInputDialog(null, "El valor introducido no es correcto\n"
                             + "Recuerde que su valor tiene que ser Mayor que 0 y Menor 100");
                     Bateria = Integer.parseInt(BateriaO);
                 }
+                JOptionPane.showMessageDialog(null, "El nivel de bateria se ha establecido en un " + Bateria + "%");
+                
 
                 break;
             case 3:
@@ -55,8 +61,9 @@ public class Aspiradora {
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Opcion no valida");
-
-        }
+                } 
+        
+        }while (SeleccionUsuario!=0);
 
     }
 }
