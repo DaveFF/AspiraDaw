@@ -9,23 +9,39 @@ public class Aspiradora {
 
     public static void main(String[] args) {
 
+        final String USUARIO = "usuario";
+        final String CONTRASENA = "contraseña";
         int Bateria = 0;
         int SeleccionUsuario;
         int MCocina, MSalon, MBaño, MDormitorio1, MDormitorio2;
         boolean Configurado = false;
+        boolean Cargado = false;
 
         Date Fecha = new Date();
 
-        String IPIN = JOptionPane.showInputDialog(null,
-                "Introduzca su PIN de seguridad para la AspiradoraDaw");
-        int PIN = Integer.parseInt(IPIN);
-        //PIN=1234
-        while (PIN != 1234) {
-            String FalloPIN = JOptionPane.showInputDialog(null,
-                    "El PIN introducido no es correcto, intentelo otra vez");
-            PIN = Integer.parseInt(FalloPIN);
+        String IUsuario = JOptionPane.showInputDialog(null,
+                "Introduzca su usuario");
+        if (USUARIO.equals(IUsuario)) {
+
+        } else {
+            do {
+                IUsuario = JOptionPane.showInputDialog(null,
+                        "Usuario incorrecto, introduzca un usuario valido");
+            } while (IUsuario == null ? USUARIO != null : !IUsuario.equals(USUARIO));
 
         }
+        String IContrasena = JOptionPane.showInputDialog(null,
+                "Introduzca su contraseña");
+        if (CONTRASENA.equals(IContrasena)) {
+
+        } else {
+            do {
+                IContrasena = JOptionPane.showInputDialog(null,
+                        "Contraseña incorrecta, introduzca la contraseña correcta");
+            } while (IContrasena == null ? CONTRASENA != null : !IContrasena.equals(CONTRASENA));
+
+        }
+
         do {
 
             String Menu = JOptionPane.showInputDialog(null, "Elige opción:\n"
@@ -68,6 +84,12 @@ public class Aspiradora {
                     Configurado = true;
                     break;
                 case 2:
+                    if (Cargado=true) {
+                        JOptionPane.showMessageDialog(null, "Ya has cargado la bateria y no se requiere introducir los valores otra vez"
+                                + "(Bateria al "+Bateria+"%)");
+                        break;
+                                
+                    }
                     String BateriaO = JOptionPane.showInputDialog(null, "Has escogido cambiar la bateria (Valor actual " + Bateria + "%)\n"
                             + "Escoga un porcentaje valido de bateria");
                     Bateria = Integer.parseInt(BateriaO);
@@ -108,6 +130,7 @@ public class Aspiradora {
                     JOptionPane.showMessageDialog(null, "Cargando...");
                     Bateria = 100;
                     JOptionPane.showMessageDialog(null, "La bateria se ha cargado al 100%");
+                    Cargado = true;
                     break;
 
                 case 0:
