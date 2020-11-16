@@ -109,6 +109,9 @@ public class Aspiradora {
                         break;
                     } else {
                         JOptionPane.showMessageDialog(null, "Se iniciara el Aspirado");
+                        
+                        
+                        
                     }
                 case 4:
                     if (Configurado = false) {
@@ -117,6 +120,10 @@ public class Aspiradora {
                         break;
                     } else {
                         JOptionPane.showMessageDialog(null, "Se iniciara el Aspirado y Fregado");
+                        
+                        
+                        
+                        
                     }
 
                 case 5:
