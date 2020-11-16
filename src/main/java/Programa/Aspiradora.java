@@ -84,11 +84,11 @@ public class Aspiradora {
                     Configurado = true;
                     break;
                 case 2:
-                    if (Cargado=true) {
+                    if (Cargado = true) {
                         JOptionPane.showMessageDialog(null, "Ya has cargado la bateria y no se requiere introducir los valores otra vez"
-                                + "(Bateria al "+Bateria+"%)");
+                                + "(Bateria al " + Bateria + "%)");
                         break;
-                                
+
                     }
                     String BateriaO = JOptionPane.showInputDialog(null, "Has escogido cambiar la bateria (Valor actual " + Bateria + "%)\n"
                             + "Escoga un porcentaje valido de bateria");
@@ -109,7 +109,22 @@ public class Aspiradora {
                         break;
                     } else {
                         JOptionPane.showMessageDialog(null, "Se iniciara el Aspirado");
-                        
+//                        ASPIRACIÓN.Modo completo
+//                        . En este modo
+//                        , la aspiradora limpia el piso entero
+//                        . El robot va  limpiando habitaciones en función de su batería
+//                        . Si al entrar en una habitación no le llega la batería para poder completarla entonces la aspiradora se para e informa al usuario que no puede terminar y también informa de las dependencias que ha podido limpiar.Modo dependencias
+//                        . Sólo limpia las habitaciones que se le indiquen, si tiene batería
+//                        .
+//                      En ambos modos
+//                        , cada metro cuadrado de limpieza agota un 1,5% de batería
+//                        . Cada vez que se limpia una habitación se actualiza el estado de la batería,
+//                                para controlar si puede limpiar la siguiente habitación.En ningún caso
+//                        , si está limpiando la casa o una dependencia, el nivel de batería no puede ser inferior al 3%, para que el robot tenga autonomía y pueda
+//                        volver a su base de carga
+                    
+                
+
                         
                         
                     }
@@ -120,10 +135,7 @@ public class Aspiradora {
                         break;
                     } else {
                         JOptionPane.showMessageDialog(null, "Se iniciara el Aspirado y Fregado");
-                        
-                        
-                        
-                        
+
                     }
 
                 case 5:
