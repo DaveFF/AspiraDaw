@@ -12,7 +12,7 @@ public class Aspiradora {
         final String USUARIO = "usuario";
         final String CONTRASENA = "contraseña";
         int Bateria = 0;
-        int SeleccionUsuario, SeleccionAspirar;
+        int SeleccionUsuario, SeleccionAspirar, SeleccionFregar;
         int MCocina = 0, MSalon = 0, MBano = 0, MDormitorio1 = 0, MDormitorio2 = 0;
         double consumoAspirado = 1.5, consumoFregado = 2.25;
         int acumuladorBateria;
@@ -56,7 +56,8 @@ public class Aspiradora {
             switch (SeleccionUsuario) {
 
                 case 1:
-                    JOptionPane.showMessageDialog(null, "Se iniciara la configuracion del sistema");
+                    JOptionPane.showMessageDialog(null, "Se iniciara la configuracion del sistema\n"
+                            + "(Una configuracion inapropiada podria resultar en un servicio no eficiente)");
                     String Cocina = JOptionPane.showInputDialog(null,
                             "Introduzca los Metros cuadrados de la cocina");
                     MCocina = Integer.parseInt(Cocina);
@@ -193,11 +194,101 @@ public class Aspiradora {
                 case 4:
 
                     JOptionPane.showMessageDialog(null, "Se iniciara el Aspirado y Fregado");
+                    String Fregado = JOptionPane.showInputDialog(null, "Elige un metodo de aspirado y fregado:\n"
+                            + "1.- Aspirado y Fregado completo\n"
+                            + "2.- Aspirar y Fregar zonas");
 
+                    int seleccionFregado = Integer.parseInt(Fregado);
+                    switch (seleccionFregado) {
+
+                        case 1:
+                            JOptionPane.showMessageDialog(null, "Se iniciara un aspirado y fregado completo ");
+                        case 2:
+                            JOptionPane.showMessageDialog(null, "Se iniciara un aspirado y fregado por zonas\n"
+                                    + "A continuacion seleccione que areas desea que sean limpiadas");
+                            do {
+                                String MenuFregar = JOptionPane.showInputDialog(null, "Elige que aspirar y fregar"
+                                        + " (Bateria restante: " + Bateria + "%):\n"
+                                        + "1.- Cocina " + MCocina + "m cuadrados\n"
+                                        + "2.- Salón " + MSalon + "m cuadrados\n"
+                                        + "3.- Baño: " + MBano + " Metros cuadrados\n"
+                                        + "4.- Dormitorio 1 " + MDormitorio1 + "m cuadrados\n"
+                                        + "5.- Dormitorio 2 " + MDormitorio2 + "m cuadrados\n"
+                                        + "0.- Volver al menu"
+                                );
+                                SeleccionFregar = Integer.parseInt(MenuFregar);
+                                switch (SeleccionFregar) {
+                                    case 1:
+                                        acumuladorBateria = Bateria;
+                                        acumuladorBateria -= (consumoFregado * MCocina);
+                                        if (acumuladorBateria < 3) {
+                                            JOptionPane.showMessageDialog(null, "La aspiradora no tiene suficiente bateria asignada\n"
+                                                    + "Asigna un valor optimo o enviala a la base de carga");
+                                            break;
+                                        }
+                                        JOptionPane.showMessageDialog(null, "Limpiando Cocina");
+                                        Bateria -= (consumoFregado * MCocina);
+                                        JOptionPane.showMessageDialog(null, "Cocina limpia");
+                                        break;
+                                    case 2:
+                                        acumuladorBateria = Bateria;
+                                        acumuladorBateria -= (consumoFregado * MSalon);
+                                        if (acumuladorBateria < 3) {
+                                            JOptionPane.showMessageDialog(null, "La aspiradora no tiene suficiente bateria asignada\n"
+                                                    + "Asigna un valor optimo o enviala a la base de carga");
+                                            break;
+                                        }
+                                        JOptionPane.showMessageDialog(null, "Limpiando Salon");
+                                        Bateria -= (consumoFregado * MSalon);
+                                        JOptionPane.showMessageDialog(null, "Salon limpio");
+                                        break;
+                                    case 3:
+                                        acumuladorBateria = Bateria;
+                                        acumuladorBateria -= (consumoFregado * MBano);
+                                        if (acumuladorBateria < 3) {
+                                            JOptionPane.showMessageDialog(null, "La aspiradora no tiene suficiente bateria asignada\n"
+                                                    + "Asigna un valor optimo o enviala a la base de carga");
+                                            break;
+                                        }
+                                        JOptionPane.showMessageDialog(null, "Limpiando Baño");
+                                        Bateria -= (consumoFregado * MBano);
+                                        JOptionPane.showMessageDialog(null, "Baño limpio");
+                                        break;
+                                    case 4:
+                                        acumuladorBateria = Bateria;
+                                        acumuladorBateria -= (consumoFregado * MDormitorio1);
+                                        if (acumuladorBateria < 3) {
+                                            JOptionPane.showMessageDialog(null, "La aspiradora no tiene suficiente bateria asignada\n"
+                                                    + "Asigna un valor optimo o enviala a la base de carga");
+                                            break;
+                                        }
+                                        JOptionPane.showMessageDialog(null, "Limpiando Dormitorio 1");
+                                        Bateria -= (consumoFregado * MDormitorio1);
+                                        JOptionPane.showMessageDialog(null, "Dormitorio 1 limpio");
+                                        break;
+                                    case 5:
+                                        acumuladorBateria = Bateria;
+                                        acumuladorBateria -= (consumoFregado * MDormitorio2);
+                                        if (acumuladorBateria < 3) {
+                                            JOptionPane.showMessageDialog(null, "La aspiradora no tiene suficiente bateria asignada\n"
+                                                    + "Asigna un valor optimo o enviala a la base de carga");
+                                            break;
+                                        }
+                                        JOptionPane.showMessageDialog(null, "Limpiando Dormitorio 2");
+                                        Bateria -= (consumoFregado * MDormitorio2);
+                                        JOptionPane.showMessageDialog(null, "Dormitorio 2 limpio");
+                                        break;
+                                    case 0:
+                                        break;
+                                    default:
+                                        JOptionPane.showMessageDialog(null, "Opcion no valida");
+                                }
+                            } while (SeleccionFregar != 0);
+                            break;
+                    }
                     break;
 
                 case 5:
-                    JOptionPane.showMessageDialog(null, "Se mostrara la informacion del dispositivo");
                     DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
                     JOptionPane.showMessageDialog(null, "Hora y fecha: " + hourdateFormat.format(Fecha) + "\n"
                             + "Bateria establecida: " + Bateria + "%\n");
