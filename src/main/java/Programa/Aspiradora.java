@@ -109,60 +109,49 @@ public class Aspiradora {
 
                         case 1:
                             JOptionPane.showMessageDialog(null, "Se iniciara un aspirado completo");
-                            do {
+                            acumuladorBateria = Bateria;
+                            if (acumuladorBateria > 3) {
                                 JOptionPane.showMessageDialog(null, "Limpiando cocina");
                                 acumuladorBateria -= (consumoAspirado * MCocina);
                                 Bateria -= (consumoAspirado * MCocina);
-                                limpioCocina=true;
-
-                                JOptionPane.showMessageDialog(null, "Limpiando Salon");
-                                acumuladorBateria -= (consumoAspirado * MSalon);
-                                Bateria -= (consumoAspirado * MSalon);
-                                limpioSalon=true;
-
-                                JOptionPane.showMessageDialog(null, "Limpiando Baño");
-                                acumuladorBateria -= (consumoAspirado * MBano);
-                                Bateria -= (consumoAspirado * MBano);
-                                limpioBano=true;
-
-                                JOptionPane.showMessageDialog(null, "Limpiando Dormitorio 1");
-                                acumuladorBateria -= (consumoAspirado * MDormitorio1);
-                                Bateria -= (consumoAspirado * MDormitorio1);
-                                limpioDormitorio1=true;
-
-                                JOptionPane.showMessageDialog(null, "Limpiando Dormitorio 2");
-                                acumuladorBateria -= (consumoAspirado * MDormitorio2);
-                                Bateria -= (consumoAspirado * MDormitorio2);
-                                limpioDormitorio2=true;
-
-                            } while (acumuladorBateria > 3);
-
-                            if (limpioDormitorio2 = true) {
-                                JOptionPane.showMessageDialog(null, "Se ha limpiado todo y me ha sobrado un " + Bateria + "%");
-
-                            } else {
-                                if (limpioDormitorio1 = true) {
-                                    JOptionPane.showMessageDialog(null, "Se ha limpiado hasta la habitacion 1\n"
-                                            + "Falta por limpiar Habitacion 2 (Se necesita cargar la bateria)");
-                                } else {
-                                    if (limpioBano = true) {
-                                        JOptionPane.showMessageDialog(null, "Se ha limpiado hasta el baño\n"
-                                                + "Falta por limpiar Habitacion 2 y HAbitacion 1 (Se necesita cargar la bateria)");
-                                    } else {
-                                        if (limpioSalon = true) {
-                                            JOptionPane.showMessageDialog(null, "Se ha limpiado hasta el Salón\n"
-                                                    + "Falta por limpiar Baño y Habitaciones 1 y 2 (Se necesita cargar la bateria)");
-                                        } else {
-                                            if (limpioCocina = true) {
-                                                JOptionPane.showMessageDialog(null, "Solo se ha limpiado la Cocina\n"
-                                                        + "Falta por limpiar Salón Baño y Habitaciones 1 y 2 (Se necesita cargar la bateria)");
+                                if (acumuladorBateria > 3) {
+                                    JOptionPane.showMessageDialog(null, "Limpiando Salon");
+                                    acumuladorBateria -= (consumoAspirado * MSalon);
+                                    Bateria -= (consumoAspirado * MSalon);
+                                    if (acumuladorBateria > 3) {
+                                        JOptionPane.showMessageDialog(null, "Limpiando Baño");
+                                        acumuladorBateria -= (consumoAspirado * MBano);
+                                        Bateria -= (consumoAspirado * MBano);
+                                        if (limpioDormitorio1) {
+                                            JOptionPane.showMessageDialog(null, "Limpiando Dormitorio 1");
+                                            acumuladorBateria -= (consumoAspirado * MDormitorio1);
+                                            Bateria -= (consumoAspirado * MDormitorio1);
+                                            if (limpioDormitorio2) {
+                                                JOptionPane.showMessageDialog(null, "Limpiando Dormitorio 2");
+                                                acumuladorBateria -= (consumoAspirado * MDormitorio2);
+                                                Bateria -= (consumoAspirado * MDormitorio2);
                                             } else {
-                                                JOptionPane.showMessageDialog(null, "No he podido limpiar la Cocina completa");
+                                                JOptionPane.showMessageDialog(null, "No he podido limpiar el Dormitorio 2"
+                                                        + " (Bateria baja)");
                                             }
+                                        } else {
+                                            JOptionPane.showMessageDialog(null, "No he podido limpiar el Dormitorio 1"
+                                                    + " (Bateria baja)");
                                         }
+
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "No he podido limpiar el baño"
+                                                + " (Bateria baja)");
                                     }
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "No he podido limpiar el salon"
+                                            + " (Bateria baja)");
                                 }
+                            } else {
+                                JOptionPane.showMessageDialog(null, "No he podido limpiar nada"
+                                        + " (Bateria baja)");
                             }
+
 
                             limpioCocina = false;
                             limpioSalon = false;
