@@ -20,28 +20,28 @@ public class Aspiradora {
 
         Date Fecha = new Date();
 
-        String IUsuario = JOptionPane.showInputDialog(null,
-                "Introduzca su usuario (usuario)");
-        if (USUARIO.equals(IUsuario)) {
-
-        } else {
-            do {
-                IUsuario = JOptionPane.showInputDialog(null,
-                        "Usuario incorrecto, introduzca un usuario valido");
-            } while (IUsuario == null ? USUARIO != null : !IUsuario.equals(USUARIO));
-
-        }
-        String IContrasena = JOptionPane.showInputDialog(null,
-                "Introduzca su contraseña (contraseña)");
-        if (CONTRASENA.equals(IContrasena)) {
-
-        } else {
-            do {
-                IContrasena = JOptionPane.showInputDialog(null,
-                        "Contraseña incorrecta, introduzca la contraseña correcta");
-            } while (IContrasena == null ? CONTRASENA != null : !IContrasena.equals(CONTRASENA));
-
-        }
+//        String IUsuario = JOptionPane.showInputDialog(null,
+//                "Introduzca su usuario (usuario)");
+//        if (USUARIO.equals(IUsuario)) {
+//
+//        } else {
+//            do {
+//                IUsuario = JOptionPane.showInputDialog(null,
+//                        "Usuario incorrecto, introduzca un usuario valido");
+//            } while (IUsuario == null ? USUARIO != null : !IUsuario.equals(USUARIO));
+//
+//        }
+//        String IContrasena = JOptionPane.showInputDialog(null,
+//                "Introduzca su contraseña (contraseña)");
+//        if (CONTRASENA.equals(IContrasena)) {
+//
+//        } else {
+//            do {
+//                IContrasena = JOptionPane.showInputDialog(null,
+//                        "Contraseña incorrecta, introduzca la contraseña correcta");
+//            } while (IContrasena == null ? CONTRASENA != null : !IContrasena.equals(CONTRASENA));
+//
+//        }
         do {
 //Bucle dowhile para que el menú se repita todas las veces que el usuario desee
 
@@ -63,7 +63,7 @@ public class Aspiradora {
                     String Cocina = JOptionPane.showInputDialog(null,
                             "Introduzca los Metros cuadrados de la cocina");
                     MCocina = Integer.parseInt(Cocina);
-                    if (MCocina > 0) {
+                    if (MCocina < 1) {
                         CocinaO = JOptionPane.showInputDialog(null, "El valor introducido no es correcto\n"
                                 + "Recuerde que el valor tiene que ser Mayor que 0");
                         MCocina = Integer.parseInt(CocinaO);
@@ -71,33 +71,33 @@ public class Aspiradora {
                     String Salon = JOptionPane.showInputDialog(null,
                             "Introduzca los Metros cuadrados del salón");
                     MSalon = Integer.parseInt(Salon);
-                    if (MSalon > 0) {
+                    if (MSalon < 1) {
                         SalonO = JOptionPane.showInputDialog(null, "El valor introducido no es correcto\n"
-                                + "Recuerde que su valor tiene que ser Mayor que 0 y Menor 100");
+                                + "Recuerde que el valor tiene que ser Mayor que 0");
                         MSalon = Integer.parseInt(SalonO);
                     }
                     String Baño = JOptionPane.showInputDialog(null,
                             "Introduzca los Metros cuadrados del baño");
                     MBano = Integer.parseInt(Baño);
-                    if (MBano > 0) {
+                    if (MBano < 1) {
                         BanoO = JOptionPane.showInputDialog(null, "El valor introducido no es correcto\n"
-                                + "Recuerde que su valor tiene que ser Mayor que 0 y Menor 100");
+                               + "Recuerde que el valor tiene que ser Mayor que 0");
                         MBano = Integer.parseInt(BanoO);
                     }
                     String Dormitorio1 = JOptionPane.showInputDialog(null,
                             "Introduzca los Metros cuadrados del dormitorio 1");
                     MDormitorio1 = Integer.parseInt(Dormitorio1);
-                    if (MDormitorio1 > 0) {
+                    if (MDormitorio1 < 1) {
                         Dormitorio1O = JOptionPane.showInputDialog(null, "El valor introducido no es correcto\n"
-                                + "Recuerde que su valor tiene que ser Mayor que 0 y Menor 100");
+                                + "Recuerde que el valor tiene que ser Mayor que 0");
                         MDormitorio1 = Integer.parseInt(Dormitorio1O);
                     }
                     String Dormitorio2 = JOptionPane.showInputDialog(null,
                             "Introduzca los Metros cuadrados del dormitorio 2");
                     MDormitorio2 = Integer.parseInt(Dormitorio2);
-                    if (MDormitorio2 > 0) {
+                    if (MDormitorio2 < 1) {
                         Dormitorio2O = JOptionPane.showInputDialog(null, "El valor introducido no es correcto\n"
-                                + "Recuerde que su valor tiene que ser Mayor que 0 y Menor 100");
+                                + "Recuerde que el valor tiene que ser Mayor que 0 o menor que 100");
                         MDormitorio2 = Integer.parseInt(Dormitorio2O);
                     }
                     BateriaO = JOptionPane.showInputDialog(null, "Escoja un porcentaje valido de bateria");
