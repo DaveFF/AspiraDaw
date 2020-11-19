@@ -15,33 +15,35 @@ public class Aspiradora {
         int SeleccionUsuario, SeleccionAspirar, SeleccionFregar;
         int MCocina = 0, MSalon = 0, MBano = 0, MDormitorio1 = 0, MDormitorio2 = 0;
         double consumoAspirado = 1.5, consumoFregado = 2.25;
-        int acumuladorBateria = 0;
+        int acumuladorBateria = 0;//Este acumulador se utiliza para calcular si la 
+        //aspiradora tiene suficiente bateria para hacer las operaciones que se le piden
         String BateriaO, CocinaO, SalonO, BanoO, Dormitorio1O, Dormitorio2O;
 
         Date Fecha = new Date();
+        //Con esto y con los imports Date se muestra la fecha en el estado general
 
-//        String IUsuario = JOptionPane.showInputDialog(null,
-//                "Introduzca su usuario (usuario)");
-//        if (USUARIO.equals(IUsuario)) {
-//
-//        } else {
-//            do {
-//                IUsuario = JOptionPane.showInputDialog(null,
-//                        "Usuario incorrecto, introduzca un usuario valido");
-//            } while (IUsuario == null ? USUARIO != null : !IUsuario.equals(USUARIO));
-//
-//        }
-//        String IContrasena = JOptionPane.showInputDialog(null,
-//                "Introduzca su contraseña (contraseña)");
-//        if (CONTRASENA.equals(IContrasena)) {
-//
-//        } else {
-//            do {
-//                IContrasena = JOptionPane.showInputDialog(null,
-//                        "Contraseña incorrecta, introduzca la contraseña correcta");
-//            } while (IContrasena == null ? CONTRASENA != null : !IContrasena.equals(CONTRASENA));
-//
-//        }
+        String IUsuario = JOptionPane.showInputDialog(null,
+                "Introduzca su usuario (usuario)");
+        if (USUARIO.equals(IUsuario)) {
+            //ifelses con dowhile para que el usuario y la contraseña sean los correctos
+        } else {
+            do {
+                IUsuario = JOptionPane.showInputDialog(null,
+                        "Usuario incorrecto, introduzca un usuario valido");
+            } while (IUsuario == null ? USUARIO != null : !IUsuario.equals(USUARIO));
+
+        }
+        String IContrasena = JOptionPane.showInputDialog(null,
+                "Introduzca su contraseña (contraseña)");
+        if (CONTRASENA.equals(IContrasena)) {
+
+        } else {
+            do {
+                IContrasena = JOptionPane.showInputDialog(null,
+                        "Contraseña incorrecta, introduzca la contraseña correcta");
+            } while (IContrasena == null ? CONTRASENA != null : !IContrasena.equals(CONTRASENA));
+
+        }
         do {
 //Bucle dowhile para que el menú se repita todas las veces que el usuario desee
 
@@ -81,7 +83,7 @@ public class Aspiradora {
                     MBano = Integer.parseInt(Baño);
                     if (MBano < 1) {
                         BanoO = JOptionPane.showInputDialog(null, "El valor introducido no es correcto\n"
-                               + "Recuerde que el valor tiene que ser Mayor que 0");
+                                + "Recuerde que el valor tiene que ser Mayor que 0");
                         MBano = Integer.parseInt(BanoO);
                     }
                     String Dormitorio1 = JOptionPane.showInputDialog(null,
@@ -210,6 +212,8 @@ public class Aspiradora {
                                         acumuladorBateria = Bateria;
                                         acumuladorBateria -= (consumoAspirado * MCocina);
                                         if (acumuladorBateria < 3) {
+                                            //Estos ifs actuan en el caso de que el 
+                                            //acumulador no sea mayor de 3
                                             JOptionPane.showMessageDialog(null, "La aspiradora no tiene suficiente bateria asignada\n"
                                                     + "Asigna un valor optimo o enviala a la base de carga");
                                             break;
@@ -289,6 +293,8 @@ public class Aspiradora {
                             JOptionPane.showMessageDialog(null, "Se iniciara un aspirado y fregado completo ");
                             acumuladorBateria = Bateria;
                             acumuladorBateria -= (consumoFregado * MCocina);
+                            //Varios ifelse que actuan como limitador para la bateria
+                            //usando un acumulador
                             if (acumuladorBateria > 3) {
                                 JOptionPane.showMessageDialog(null, "Fregando cocina");
                                 Bateria -= (consumoFregado * MCocina);
@@ -304,7 +310,7 @@ public class Aspiradora {
                                         if (acumuladorBateria > 3) {
                                             JOptionPane.showMessageDialog(null, "Fregando Dormitorio 1");
                                             acumuladorBateria -= (consumoFregado * MDormitorio2);
-                                            Bateria -= (consumoFregado * MDormitorio2);
+                                            Bateria -= (consumoFregado * MDormitorio1);
                                             if (acumuladorBateria > 3) {
                                                 JOptionPane.showMessageDialog(null, "Fregando Dormitorio 2");
                                                 Bateria -= (consumoFregado * MDormitorio2);
@@ -437,6 +443,7 @@ public class Aspiradora {
             }
 
         } while (SeleccionUsuario != 0);
+        //Si el usuario introduce un 0 se ejecuta el case 0 y sale del bucle dowhile
 
     }
 }
